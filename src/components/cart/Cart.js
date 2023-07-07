@@ -13,12 +13,15 @@ const Cart = () => {
   // console.log("indata:",inddata);
 
   const getinddata = async () => {
-    const res = await fetch(`http://localhost:8005/getproductsone/${id}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const res = await fetch(
+      `${process.env.REACT_APP_SERVER_URL}/getproductsone/${id}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     const data = await res.json();
     // console.log(res);
     console.log("data from cart:",data)
@@ -38,15 +41,18 @@ const Cart = () => {
   // add cart fucntion
 const addToCart = async (id) => {
   try {
-    const checkResult = await fetch(`http://localhost:8005/addcart/${id}`, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ inddata }),
-      credentials: "include",
-    });
+    const checkResult = await fetch(
+      `${process.env.REACT_APP_SERVER_URL}/addcart/${id}`,
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ inddata }),
+        credentials: "include",
+      }
+    );
 
     if (checkResult.status === 401) {
       console.log("user invalid");

@@ -62,14 +62,17 @@ const Navbar = () => {
   };
 
   const getdetailsvaliduser = async () => {
-    const res = await fetch("http://localhost:8005/validuser", {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-    });
+    const res = await fetch(
+      `${process.env.REACT_APP_SERVER_URL}/validuser`,
+      {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      }
+    );
 
     const data = await res.json();
     console.log("from getdetailsvaliduser: ", data);
@@ -88,14 +91,17 @@ const Navbar = () => {
 
   // for logout
   const logoutuser = async () => {
-    const res2 = await fetch("http://localhost:8005/logout", {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-    });
+    const res2 = await fetch(
+      `${process.env.REACT_APP_SERVER_URL}/logout`,
+      {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      }
+    );
 
     const data2 = await res2.json();
     // console.log(data2);

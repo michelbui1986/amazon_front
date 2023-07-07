@@ -26,12 +26,15 @@ const SignIn = () => {
     const { email, password } = logData;
     console.log("email:", email);
     try {
-      const res = await fetch("http://localhost:8005/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-        credentials: "include",
-      });
+      const res = await fetch(
+        `${process.env.REACT_APP_SERVER_URL}/login`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, password }),
+          credentials: "include",
+        }
+      );
       const data = await res.json();
       console.log(data);
       if (res.status === 400 || !data) {

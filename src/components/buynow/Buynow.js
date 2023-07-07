@@ -11,7 +11,7 @@ const Buynow = () => {
   // console.log(cartdata.length);
 
   const getdatabuy = async () => {
-    const res = await fetch("http://localhost:8005/cartdetails", {
+    const res = await fetch(`${process.env.REACT_APP_SERVER_URL}/cartdetails`, {
       method: "GET",
       headers: {
         Accept: "application/json",

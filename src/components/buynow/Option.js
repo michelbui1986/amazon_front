@@ -11,14 +11,17 @@ const Option = ({ deletedata, get }) => {
 
   const removedata = async (id) => {
     try {
-      const res = await fetch(`http://localhost:8005/remove/${id}`, {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-      });
+      const res = await fetch(
+        `${process.env.REACT_APP_SERVER_URL}/remove/${id}`,
+        {
+          method: "GET",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+        }
+      );
 
       const data = await res.json();
       // console.log(data);

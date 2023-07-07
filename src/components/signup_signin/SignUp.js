@@ -25,11 +25,14 @@ const SignUp = () => {
     const { fname, email, mobile, password, cpassword } = uData;
     
 
-    const res = await fetch("http://localhost:8005/register", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ fname, email, mobile, password, cpassword }),
-    });
+    const res = await fetch(
+      `${process.env.REACT_APP_SERVER_URL}/register`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ fname, email, mobile, password, cpassword }),
+      }
+    );
     const data = await res.json();
     console.log(data);
     if (res.status === 422 || !data) {
